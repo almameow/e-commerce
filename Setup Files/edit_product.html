@@ -1,0 +1,69 @@
+<html>
+<head>
+	<title>Edit Product - ID #</title>
+	<link rel="stylesheet" href="normalize.css">
+	<link rel="stylesheet" href="skeleton.css">
+</head>
+<body>
+
+<div class="container">
+	<h4>Edit Product - ID 2</h4>
+	<div class="six columns">
+		<form action="#" method="post">
+			<div class="row">
+				<label for="name">Name</label>
+				<input class="u-pull-right" type="text" placeholder="{Product Name from DB}" name="name" id="name"> 
+			</div>
+			<div class="row">
+				<label for="description">Description</label>
+				<textarea class="u-pull-right" placeholder="{Product Description from DB}" name="description" id="description">{Product description from DB}</textarea>
+			</div>
+			<div class="row">
+				<label for="categories">Categories</label>
+				<select class="u-pull-right" id="categories">
+					<option value="shirts">Shirts</option>
+					<option value="shoes">Shoes</option>
+					<option value="cups">Cups</option>
+					<option value="fruits">Fruits</option>
+				</select>
+			</div>
+			<div class="row">
+				<label for="other">or add new category:</label>
+				<input class="u-pull-right" type="text" name="other" id="other">
+			</div>
+			<div class="row">
+				<label for="image">Images</label>
+				<input class="u-pull-right" type="file" name="images" id="image">
+			</div>
+			<div class="row">
+				<form action="#" method="post">
+					<div class="row">
+						<img src="#">
+						img.png 
+						{trash icon} 
+						<input type="checkbox" name="main" value="main">
+					</div>
+					<div class="row">
+						<img src="#">
+						img.png 
+						{trash icon} 
+						<input type="checkbox" name="main" value="main">
+					</div>
+					<div class="row">
+						<img src="#">
+						img.png 
+						{trash icon} 
+						<input type="checkbox" name="main" value="main">
+					</div>
+					<div class="row">
+						<a href="#"><button>Cancel</button></a> <!-- Link closes this window? Redirect? I dunno -->
+						<a href="#" target="_blank"><button>Preview</button></a> <!-- Link opens new tab w/ approperiate product page -->
+						<input class="button-primary" type="submit" value="Update">
+					</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+</body>
+</html>
