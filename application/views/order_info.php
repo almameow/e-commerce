@@ -1,8 +1,8 @@
 <html>
 <head>
 	<title>E-Commerce</title>
-	<link rel="stylesheet" href="../assets/normalize.css">
-	<link rel="stylesheet" href="../assets/skeleton.css">
+	<link rel="stylesheet" href="/assets/normalize.css">
+	<link rel="stylesheet" href="/assets/skeleton.css">
 	<style type="text/css">
 		#header {
 			height: 50px;
@@ -58,10 +58,6 @@
 		#table {
 			margin-top: 20px;
 		}
-/*
-			table {
-				margin: auto;
-			}*/
 
 				table .image {
 					width: 50px;
@@ -93,27 +89,27 @@
 		<div class="row">
 			<div class="twelve columns" id='header'>
 				<h3>Dashboard</h3>
-				<h4 class='orders'><a href="">Orders</a></h4>
-				<h4 class='products'><a href="">Products</a></h4>
+				<h4 class='orders'><a href="/dashboard/orders">Orders</a></h4>
+				<h4 class='products'><a href="/dashboard/products">Products</a></h4>
 				<h4 class='logoff'><a href="">log off</a></h4>
 			</div>
 		</div>
 		<div class="row">
 			<div class="five columns">
 				<div class="order">
-					<p class='order_header'>Order ID: 1</p>
+					<p class='order_header'>Order ID: <?= $order_info[0]->order_id ?></p>
 					<p class='order_header'>Customer shipping info:</p>
-					<p>name: bob</p>
-					<p>address: 123 dojo way</p>
-					<p>city: seattle</p>
-					<p>state: wa</p>
-					<p>zip: 98133</p>
+					<p>name: <?= $order_info[0]->shipping_name ?></p>
+					<p>address: <?= $order_info[0]->shipping_address ?></p>
+					<p>city: <?= $order_info[0]->shipping_city ?></p>
+					<p>state: <?= $order_info[0]->shipping_state ?></p>
+					<p>zip: <?= $order_info[0]->shipping_zip ?></p>
 					<p class='order_header'>Customer billing info</p>
-					<p>name: bob</p>
-					<p>address: 123 dojo way</p>
-					<p>city: seattle</p>
-					<p>state: wa</p>
-					<p>zip: 98133</p>
+					<p>name: <?= $order_info[0]->billing_name ?></p>
+					<p>address: <?= $order_info[0]->billing_address ?></p>
+					<p>city: <?= $order_info[0]->billing_city ?></p>
+					<p>state: <?= $order_info[0]->billing_state ?></p>
+					<p>zip: <?= $order_info[0]->billing_zip ?></p>
 				</div>
 			</div>
 			<div class="seven columns" id='table'>
@@ -126,29 +122,32 @@
 						<th>Total</th>
 					</thead>
 					<tbody>
+<?php
+					$subtotal = 0;
+					$total = 0;
+					$quantity = 2;
+					foreach ($order_info as $order) {
+?>
 						<tr>
-							<td>35</td>
-							<td>cup</td>
-							<td>$9.99</td>
-							<td>1</td>
-							<td>$9.99</td>
+							<td><?= $order->product_id ?></td>
+							<td><?= $order->name ?></td>
+							<td><?= $order->price ?></td>
+							<td><?= $quantity ?></td>
+							<td><?= $order->price*$quantity ?></td>
+							<?php $total += ( $order->price*$quantity ); ?>
 						</tr>
-						<tr>
-							<td>215</td>
-							<td>shirt</td>
-							<td>$9.99</td>
-							<td>2</td>
-							<td>$39.98</td>
-						</tr>
+<?php
+					}
+?>
 					</tbody>
 				</table>
 				<div class='three columns' id='status'>
-					<h6>Status: shipped</h6>
+					<h6>Status: <?= $order->status ?></h6>
 				</div>
 				<div class='three columns' id='price'>
-					<p> Sub total: $29.98</p>
-					<p>Shipping: $1.00</p>
-					<p>Total Price: $30.98</p>
+					<p>Subtotal: <?= $total ?></p>
+					<p>Shipping (10%): <?= $total*.1; ?></p>
+					<p>Total Price: <?= $total + ($total*.1); ?></p>
 				</div>
 			</div>
 		</div>

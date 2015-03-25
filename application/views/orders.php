@@ -35,6 +35,10 @@
 				vertical-align: top;
 			}
 
+			#header a {
+				color: white;
+			}
+
 		#search {
 			margin-top: 20px;
 		}
@@ -82,7 +86,7 @@
 			<div class="twelve columns" id='header'>
 				<h3>Dashboard</h3>
 				<h4 class='orders'>Orders</h4>
-				<h4 class='products'>Products</h4>
+				<h4 class='products'><a href="/dashboard/products">Products</a></h4>
 				<h4 class='logoff'>log off</h4>
 			</div>
 		</div>
@@ -113,11 +117,14 @@
 						<th>Status</th>
 					</thead>
 					<tbody>
+<?php
+					foreach ($orders as $order) {
+?>
 						<tr>
-							<td>100</td>
-							<td>Bob</td>
-							<td>9/6/2014</td>
-							<td>123 Dojo Way Bellevue WA 98005</td>
+							<td><a href="/orders/show/<?= $order->id ?>"><?= $order->id ?></a></td>
+							<td><?= $order->name ?></td>
+							<td><?= $order->created_at ?></td>
+							<td><?= $order->address . " " . $order->city . " " . $order->state . " " . $order->zip ?></td>
 							<td>$149.99</td>
 							<td>
 								<form action='' method='post' class='status'>
@@ -129,70 +136,9 @@
 								</form>
 							</td>
 						</tr>
-						<tr>
-							<td>99</td>
-							<td>Alma</td>
-							<td>9/6/2014</td>
-							<td>123 Rainbow Rd San Jose CA 90034</td>
-							<td>$120.00</td>
-							<td>
-								<form action='' method='post' class='status'>
-									<select name='status'>
-										<option value='show_all'>Shipped</option>
-										<option value='in_process'>Order in process</option>
-										<option value='shipped'>Cancelled</option>
-									</select>
-								</form>
-							</td>
-						</tr>
-						<tr>
-							<td>98</td>
-							<td>Cindy</td>
-							<td>9/6/2014</td>
-							<td>123 Boba Court</td>
-							<td>$4.99</td>
-							<td>
-								<form action='' method='post' class='status'>
-									<select name='status'>
-										<option value='show_all'>Shipped</option>
-										<option value='in_process'>Order in process</option>
-										<option value='shipped'>Cancelled</option>
-									</select>
-								</form>
-							</td>
-						</tr>
-						<tr>
-							<td>97</td>
-							<td>Courtney</td>
-							<td>9/8/2014</td>
-							<td>5698 La La Land San Jose CA 90370</td>
-							<td>$19.99</td>
-							<td>
-								<form action='' method='post' class='status'>
-									<select name='status'>
-										<option value='show_all'>Shipped</option>
-										<option value='in_process'>Order in process</option>
-										<option value='shipped'>Cancelled</option>
-									</select>
-								</form>
-							</td>
-						</tr>
-						<tr>
-							<td>96</td>
-							<td>Biceps</td>
-							<td>9/5/2014</td>
-							<td>45 Biceps Way</td>
-							<td>$99.99</td>
-							<td>
-								<form action='' method='post' class='status'>
-									<select name='status'>
-										<option value='show_all'>Shipped</option>
-										<option value='in_process'>Order in process</option>
-										<option value='shipped'>Cancelled</option>
-									</select>
-								</form>
-							</td>
-						</tr>
+<?php
+					}
+?>
 					</tbody>
 				</table>
 			</div>

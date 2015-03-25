@@ -35,6 +35,10 @@
 				vertical-align: top;
 			}
 
+			#header a {
+				color: white;
+			}
+
 		#search {
 			margin-top: 20px;
 		}
@@ -57,10 +61,10 @@
 			margin: 0 auto;
 		}
 
-			table .image {
+			table img {
+				border: 1px solid black;
 				width: 50px;
 				height: 50px;
-				border: 1px solid black;
 			}
 
 		ul {
@@ -87,20 +91,18 @@
 		<div class="row">
 			<div class="twelve columns" id='header'>
 				<h3>Dashboard</h3>
-				<h4 class='orders'>Orders</h4>
+				<h4 class='orders'><a href="/dashboard/orders">Orders</a></h4>
 				<h4 class='products'>Products</h4>
 				<h4 class='logoff'>log off</h4>
 			</div>
 		</div>
 		<div class="row">
 			<div class="twelve columns" id='search'>
-				<form action='' method='post' class='search'>
+				<form action='/dashboard/search' method='post' class='search'>
 					<input type='text' placeholder='search'>
 					<input type='submit' value='search'>
 				</form>
-				<form action='' method='post'>
-					<input type='submit' value='Add new product'>
-				</form>
+				<a href="/dashboard/create"><button class='button-primary'>Add New Product</button></a>
 			</div>
 		</div>
 		<div class="row">
@@ -115,61 +117,23 @@
 						<th>action</th>
 					</thead>
 					<tbody>
+<?php
+					foreach ($products as $product) {
+?>
 						<tr>
-							<td><div class='image'></div></td>
-							<td>1</td>
-							<td>T-shirt</td>
-							<td>123</td>
-							<td>90</td>
+							<td><div class='image'><?= "<img src='/../assets/images". $product->image . "01.jpg'>"?></div></td>
+							<td><?= $product->id ?></td>
+							<td><?= $product->name ?></td>
+							<td><?= $product->inventory_quantity ?></td>
+							<td><?= $product->sold_quantity ?></td>
 							<td>
-								<a href="">edit</a>
+								<a href="/dashboard/edit/<?= $product->id ?>">edit</a>
 								<a href="">remove</a>
 							</td>
 						</tr>
-						<tr>
-							<td><div class='image'></div></td>
-							<td>2</td>
-							<td>Hats</td>
-							<td>40</td>
-							<td>$120.00</td>
-							<td>
-								<a href="">edit</a>
-								<a href="">remove</a>
-							</td>
-						</tr>
-						<tr>
-							<td><div class='image'></div></td>
-							<td>3</td>
-							<td>Mugs</td>
-							<td>90</td>
-							<td>7</td>
-							<td>
-								<a href="">edit</a>
-								<a href="">remove</a>
-							</td>
-						</tr>
-						<tr>
-							<td><div class='image'></div></td>
-							<td>4</td>
-							<td>Pants</td>
-							<td>0</td>
-							<td>786789</td>
-							<td>
-								<a href="">edit</a>
-								<a href="">remove</a>
-							</td>
-						</tr>
-						<tr>
-							<td><div class='image'></div></td>
-							<td>5</td>
-							<td>Belts</td>
-							<td>89</td>
-							<td>20</td>
-							<td>
-								<a href="">edit</a>
-								<a href="">remove</a>
-							</td>
-						</tr>
+<?php
+					}
+?>
 					</tbody>
 				</table>
 			</div>
