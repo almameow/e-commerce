@@ -66,9 +66,9 @@
 
 			<strong>Categories</strong>
 			<ul class="no_decoration">
-				<li><a href="/products/category/1">Milk Teas (<?= $this->session->userdata("mt_count") ?>)</a></li>
-				<li><a href="/products/category/2">Hot Drinks (<?= $this->session->userdata("hd_count") ?>)</a></li>
-				<li><a href="/products/category/3">Smoothies (<?= $this->session->userdata("sm_count") ?>)</a></li>
+				<li><a href="/products/category/1">Milk Teas (<?= $this->session->userdata["mt_count"]['count'] ?>)</a></li>
+				<li><a href="/products/category/2">Hot Drinks (<?= $this->session->userdata["hd_count"]['count'] ?>)</a></li>
+				<li><a href="/products/category/3">Smoothies (<?= $this->session->userdata["sm_count"]['count'] ?>)</a></li>
 				<li><dfn><a href="/">Show All</a></dfn></li> <!-- dfn italicizes -->
 			</ul>
 		</div> 

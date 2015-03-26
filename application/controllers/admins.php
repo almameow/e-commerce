@@ -27,7 +27,7 @@ class Admins extends CI_Controller {
 				'is_logged_in' => TRUE
 			);
 			$this->session->set_userdata($user);
-			$this->load->view('dashboard_orders');
+			redirect("/dashboard");
 		}
 		else
 		{
